@@ -26,7 +26,7 @@ function ClientRequests() {
     }, [reload]);
 
     function getClientJobs() {
-        const URL = "http://localhost:5000/jobs/client"
+        const URL = "https://home-care-app.herokuapp.com/jobs/client"
 
         const promise =  axios.get(URL, config)
 

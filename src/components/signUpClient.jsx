@@ -31,9 +31,7 @@ function SignUpClient() {
     function registerClient(e) {
         e.preventDefault()
 
-        console.log("entrei caralho")
-
-        const urlLogin = "http://localhost:5000/sign-up/client"
+        const urlLogin = "https://home-care-app.herokuapp.com/sign-up/client"
         
         const promise = axios.post(urlLogin, clientInfoRegister)
         promise.then(response => {
@@ -50,11 +48,11 @@ function SignUpClient() {
         console.log("entrei no enredereço")
         e.preventDefault()
 
-        const urlAddress = "http://localhost:5000/sign-up/client/address"
+        const urlAddress = "https://home-care-app.herokuapp.com/sign-up/client/address"
 
         const promise = axios.post(urlAddress, clientAddressRegister)
         promise.then(response => {
-            console.log("entrou carai", response.data)
+            console.log(response.data)
         })
         promise.catch(err => {
             alert("erro no edereço")

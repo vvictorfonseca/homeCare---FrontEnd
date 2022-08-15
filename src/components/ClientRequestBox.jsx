@@ -22,7 +22,7 @@ function ClientRequestBox(jobInfo) {
 
             console.log("params", params)
 
-            const URL = `http://localhost:5000/delete/job/${params}`
+            const URL = `https://home-care-app.herokuapp.com/delete/job/${params}`
 
             const promise = axios.delete(URL, config)
             promise.then(response => {

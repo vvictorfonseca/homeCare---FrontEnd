@@ -23,12 +23,12 @@ function SignUpProfessional() {
     function registerProfessional(e) {
         e.preventDefault()
 
-        const URL = "http://localhost:5000/sign-up/professional"
+        const URL = "https://home-care-app.herokuapp.com/sign-up/professional"
 
         const promise = axios.post(URL, objProRegister)
 
         promise.then((response) => {
-            console.log("entrou", response.status)
+            console.log("deu bom", response.status)
             navigate("/")
         })
         promise.catch(err => {

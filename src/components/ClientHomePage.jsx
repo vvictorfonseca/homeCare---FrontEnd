@@ -33,7 +33,7 @@ function ClientHomePage() {
     }, [reload]);
 
     function getGandenProfessionals() {
-        const URL = "http://localhost:5000/professionals/garden"
+        const URL = "https://home-care-app.herokuapp.com/professionals/garden"
 
         const promise = axios.get(URL, config)
 
@@ -48,7 +48,7 @@ function ClientHomePage() {
     }
 
     function getCleaningProfessionals() {
-        const URL = "http://localhost:5000/professionals/cleaning"
+        const URL = "https://home-care-app.herokuapp.com/professionals/cleaning"
 
         const promise = axios.get(URL, config)
 
@@ -63,7 +63,7 @@ function ClientHomePage() {
     }
 
     function getEletricalProfessionals() {
-        const URL = "http://localhost:5000/professionals/electricalService"
+        const URL = "https://home-care-app.herokuapp.com/professionals/electricalService"
 
         const promise = axios.get(URL, config)
 

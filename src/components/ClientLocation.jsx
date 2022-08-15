@@ -35,7 +35,7 @@ function ClientLocation() {
     function updateLocation(e) {
         e.preventDefault()
 
-        const urlAddress = "http://localhost:5000/update/location"
+        const urlAddress = "https://home-care-app.herokuapp.com/update/location"
 
         console.log("entrou aqui")
 

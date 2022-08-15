@@ -38,7 +38,7 @@ function ProfessionalRequestBox(info) {
     }
 
     function acceptJobRequest() {
-        const URL = "http://localhost:5000/update/request"
+        const URL = "https://home-care-app.herokuapp.com/update/request"
 
         const promise = axios.put(URL, objUpdate, config)
 
@@ -57,7 +57,7 @@ function ProfessionalRequestBox(info) {
 
             console.log("iddd", info.id)
 
-            const URL = `http://localhost:5000/delete/job/${info.id}`
+            const URL = `https://home-care-app.herokuapp.com/delete/job/${info.id}`
 
             const promise = axios.delete(URL, config)
             promise.then(response => {

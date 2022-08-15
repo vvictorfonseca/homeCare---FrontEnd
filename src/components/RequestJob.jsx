@@ -40,7 +40,7 @@ function RequestJob() {
     }
 
     function handleJobRequest(objRequest) {
-        const URL = "http://localhost:5000/request/job"
+        const URL = "https://home-care-app.herokuapp.com/request/job"
 
         console.log("objeto aqui", objRequest)
 

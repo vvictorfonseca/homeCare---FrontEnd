@@ -132,7 +132,7 @@ function SignIn() {
                     <H1Client>HomeCare</H1Client>
                     <H2Client>Clients</H2Client>
                 </TextClient>
-                <Link to="/signIn/client"><button>Logar</button></Link>
+                <Link to="/sign-in/client"><button>Logar</button></Link>
                 <Link to="/signUp/client"><button>Cadastrar</button></Link>
             </Client>
         

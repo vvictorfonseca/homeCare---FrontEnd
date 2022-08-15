@@ -21,7 +21,7 @@ function ClientLogin() {
     function loginClient(e) {
         e.preventDefault()
 
-        const urlLogin = "https://home-care-app.herokuapp.com/client"
+        const urlLogin = "https://home-care-app.herokuapp.com/sign-in/client"
 
         const promise = axios.post(urlLogin, objClientLogin);
 

@@ -10,7 +10,9 @@ function SignIn() {
 
     const navigate = useNavigate()
 
-    const { setProData, setClientData } = useContext(UserContext)
+    const { setClientToken, setClientName, setClientPhoto, setClientCity, setProfessionalDescription } = useContext(UserContext)
+
+    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto } = useContext(UserContext)
 
     const [clientLogin, setClientLogin] = useState({ clientEmail: "", clientPassword: "" })
     const [proLogin, setProLogin] = useState({ proEmail: "", proPassword: "" })
@@ -25,12 +27,8 @@ function SignIn() {
         password: proLogin.proPassword
     }
 
-    console.log(objProLogin)
-
     function loginProfessioanl(e) {
         e.preventDefault()
-
-        console.log("entrou")
 
         const urlLogin = "http://localhost:5000/sign-in/professional"
 
@@ -38,9 +36,25 @@ function SignIn() {
 
         promise.then(response => {
             const { data } = response;
-            setProData(data)
-            console.log(data)
-            navigate("/signUp/professional")
+            console.log("requisição", data)
+            
+            const professionalToken = JSON.stringify(data.token)
+            const professionalName = JSON.stringify(data.fullName)
+            const professionalCity = JSON.stringify(data.city)
+            const professionalPhoto = JSON.stringify(data.profilePhoto)
+            const professionalDescription = JSON.stringify(data.description)
+            localStorage.setItem('professinalDescription', professionalDescription)
+            localStorage.setItem('professionalToken', professionalToken)
+            localStorage.setItem('professionalFullName', professionalName)
+            localStorage.setItem('professionalCity', professionalCity)
+            localStorage.setItem('professionalPhoto', professionalPhoto)
+
+            setProfessionalDescription(data.description)
+            setProfessionalToken(data.token)
+            setProfessionalCity(data.city)
+            setProfessionalName(data.fullName)
+            setProfessionalPhoto(data.profilePhoto)
+            navigate("/homePage/professional")
         })
         promise.catch(err => {
             alert('Usuário inexiste ou usuário e senha incorretos!')
@@ -50,18 +64,29 @@ function SignIn() {
     function loginClient(e) {
         e.preventDefault()
 
-        console.log("entrou")
-
         const urlLogin = "http://localhost:5000/sign-in/client"
 
         const promise = axios.post(urlLogin, objClientLogin);
 
         promise.then(response => {
             const { data } = response;
-            setClientData(data)
-            console.log(data)
-            navigate("/signUp/client")
-        })
+            
+            const user = JSON.stringify(data.token);
+            const fullName = JSON.stringify(data.fullName)
+            const photo = JSON.stringify(data.profilePhoto)
+            const city = JSON.stringify(data.city)
+            localStorage.setItem('token', user)
+            localStorage.setItem('fullName', fullName)
+            localStorage.setItem('photo', photo)
+            localStorage.setItem('city', city)
+            
+            setClientToken(data.token)
+            setClientName(data.fullName)
+            setClientPhoto(data.profilePhoto)
+            setClientCity(data.city)
+            
+            navigate("/homePage/client")
+        });
         promise.catch(err => {
             alert('Usuário inexiste ou usuário e senha incorretos!')
         })
@@ -182,7 +207,6 @@ const Text = styled.div`
     color: #333333;
 `
 const H1 = styled.h1`
-    
     margin-left: 0.8vw;
     font-size: 65px;
 `

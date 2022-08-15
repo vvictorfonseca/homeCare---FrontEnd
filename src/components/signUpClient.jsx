@@ -8,14 +8,15 @@ function SignUpClient() {
 
     const navigate = useNavigate()
 
-    const [clientInfo, setClientInfo] = useState({ clientFullname: "", clientEmail: "", clientPassword: "", clientPhoneNumber: "" })
+    const [clientInfo, setClientInfo] = useState({ clientFullname: "", clientEmail: "", clientPassword: "", clientPhoneNumber: "", clientProfilePhoto: "" })
     const [clientAddress, setClientAddress] = useState({ clientCity: "", clientDistrict: "", clientStreet: "", clientNumber: "", clientComplement: "", clientZip: "" })
 
     const clientInfoRegister = {
         fullName: clientInfo.clientFullname,
         email: clientInfo.clientEmail,
         password: clientInfo.clientPassword,
-        phoneNumber: clientInfo.clientPhoneNumber
+        phoneNumber: clientInfo.clientPhoneNumber,
+        profilePhoto: clientInfo.clientProfilePhoto
     }
 
     const clientAddressRegister = {
@@ -30,13 +31,15 @@ function SignUpClient() {
     function registerClient(e) {
         e.preventDefault()
 
+        console.log("entrei caralho")
+
         const urlLogin = "http://localhost:5000/sign-up/client"
         
         const promise = axios.post(urlLogin, clientInfoRegister)
         promise.then(response => {
             console.log(response.status)
             setInterval(registerAddress(e), 1000)
-            navigate("/signUp/client")
+            navigate("/")
         })
         promise.catch(err => {
             alert('Preencha os campos corretamente')
@@ -60,20 +63,20 @@ function SignUpClient() {
 
     function clientInfoInputs() {
         return (
-            <form onSubmit={registerClient}>
+            <form>
                 <input type="name" placeholder="Full Name" value={clientInfo.clientFullname} onChange={(e) => setClientInfo({ ...clientInfo, clientFullname: e.target.value })} />
                 <input type="email" placeholder="Email" value={clientInfo.clientEmail} onChange={(e) => setClientInfo({ ...clientInfo, clientEmail: e.target.value })} />
                 <input type="password" placeholder="Senha" value={clientInfo.clientPassword} onChange={(e) => setClientInfo({ ...clientInfo, clientPassword: e.target.value })} />
                 <input type="string" placeholder="Phone Number (xx) xxxxx-xxxx" value={clientInfo.clientPhoneNumber} onChange={(e) => setClientInfo({ ...clientInfo, clientPhoneNumber: e.target.value })} />
-
-                <button type="submit">Cadastrar</button>
+                <input type="string" placeholder="Profile Photo" value={clientInfo.clientProfilePhoto} onChange={(e) => setClientInfo({ ...clientInfo, clientProfilePhoto: e.target.value })} />
+                
             </form>
         )
     }
 
     function clientAddressInputs() {
         return (
-            <form>
+            <form onSubmit={registerClient}>
                 <input type="string" placeholder="Location (ex: Rio de Janeiro)" value={clientAddress.clientCity} onChange={(e) => setClientAddress({ ...clientAddress, clientCity: e.target.value })} />
 
                 <input type="string" placeholder="District" value={clientAddress.clientDistrict} onChange={(e) => setClientAddress({ ...clientAddress, clientDistrict: e.target.value })} />
@@ -85,6 +88,8 @@ function SignUpClient() {
                 </div>
 
                 <input type="string" placeholder="Zip-Code (ex: xxxxx-xxx)" value={clientAddress.clientZip} onChange={(e) => setClientAddress({ ...clientAddress, clientZip: e.target.value })} />
+
+                <button type="submit">Cadastrar</button>
             </form>
         )
     }

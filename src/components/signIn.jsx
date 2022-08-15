@@ -30,7 +30,7 @@ function SignIn() {
     function loginProfessioanl(e) {
         e.preventDefault()
 
-        const urlLogin = "https://home-care-app.herokuapp.com/"
+        const urlLogin = "https://home-care-app.herokuapp.com/professional"
 
         const promise = axios.post(urlLogin, objProLogin);
 
@@ -64,7 +64,7 @@ function SignIn() {
     function loginClient(e) {
         e.preventDefault()
 
-        const urlLogin = "https://home-care-app.herokuapp.com/"
+        const urlLogin = "https://home-care-app.herokuapp.com/client"
 
         const promise = axios.post(urlLogin, objClientLogin);
 

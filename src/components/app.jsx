@@ -10,7 +10,7 @@ import ProfessionalHomePage from "./ProfessionalHomePage";
 import ClientHomePage from "./ClientHomePage";
 import RequestJob from "./RequestJob";
 import ClientRequests from "./ClientRequests";
-import ProfessionalDescription from "./ProfessionalDescription";
+import ClientLocation from "./ClientLocation";
 
 import UserContext from "./context/userContext";
 
@@ -87,7 +87,7 @@ function App() {
         if (photoStorage) {
             setClientPhoto(photoStorage)
         }
-    }, []);
+    }, [update]);
 
     const contextValue = { clientToken, setClientToken, clientName, setClientName, clientPhoto, setClientPhoto, clientCity, setClientCity, requestJobInfo, setRequestJobInfo, type, setType, reload, setReload, professionalToken, setProfessionalToken, professionalName, setProfessionalName, professionalCity, setProfessionalCity, professionalPhoto, setProfessionalPhoto, refresh, setRefresh, professionalDescription, setProfessionalDescription, update, setUpdate}
 
@@ -104,7 +104,7 @@ function App() {
                         <Route path="/homePage/client" element={<ClientHomePage />} />
                         <Route path="/request/job" element={<RequestJob />} />
                         <Route path="/requests/client" element={<ClientRequests />} />
-                        <Route path="/professional/description" element={<ProfessionalDescription />} />
+                        <Route path="/Update/ClientAddress" element={<ClientLocation />} />
                     </Routes>
                 </UserContext.Provider>
             </BrowserRouter>

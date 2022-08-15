@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import axios from "axios"
 import { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import UserContext from './context/userContext';
 
@@ -10,12 +9,12 @@ import ProfessionalRequestBox from './ProfessionalRequestJob';
 
 function ProfessionalHomePage() {
 
-    const navigate = useNavigate()
+    const { professionalToken, professionalName, professionalCity, professionalPhoto, refresh, professionalDescription, update, setUpdate } = useContext(UserContext)
 
-    const { professionalToken, professionalName, professionalCity, professionalPhoto, refresh, setRefresh, professionalDescription } = useContext(UserContext)
-    
     const [professionalJobsData, setProfessionalJobsData] = useState([])
-    
+    const [description, setDescription] = useState("")
+    const [openDescription, setOpenDescription] = useState(false)
+
     const config = {
         headers: {
             Authorization: `Bearer ${professionalToken}`
@@ -41,6 +40,24 @@ function ProfessionalHomePage() {
         })
     }
 
+    const obj = {
+        description: description
+    }
+
+    function updateDescription() {
+        const URL = "http://localhost:5000/update/description"
+
+        const promise = axios.put(URL, obj, config)
+
+        promise.then(response => {
+            console.log("deu bom", response.status)
+            const professionalDescription = JSON.stringify(obj.description)
+            localStorage.setItem('professinalDescription', professionalDescription)
+            update ? setUpdate(false) : setUpdate(true)
+            setOpenDescription(false)
+        })
+    }
+
     return (
         <Container>
             <ProfessionalHeader />
@@ -49,12 +66,26 @@ function ProfessionalHomePage() {
                 <ContainerInfos>
                     <img src={professionalPhoto} ></img>
                     <p>{professionalName}</p>
-                    <p>{professionalCity}</p>
-                    <p>{professionalDescription}</p>
+                    <span>{professionalCity}</span>
 
-                    <button onClick={() => {
-                        navigate("/professional/description")
-                    }}> Update Description </button>
+                    {
+                        !openDescription ? (
+
+                            <>
+                                <h2>{professionalDescription}</h2>
+
+                                <button onClick={() => setOpenDescription(true)}> Atualizar descrição </button>
+                            </>
+
+                        ) : (
+
+                            <>
+                                <textarea value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
+
+                                <button onClick={() => updateDescription()}> Atualizar </button>
+                            </>
+                        )
+                    }
                 </ContainerInfos>
             </ProfileSidebar>
 
@@ -67,7 +98,9 @@ function ProfessionalHomePage() {
                 <>
                     {
                         professionalJobsData.length === 0 ? (
-                            <p>Você não possui reservas</p>
+                            <NoData>
+                                <h1>Você não possui reservas</h1>
+                            </NoData>
                         ) : (
                             professionalJobsData.map((info, index) => {
                                 return (<ProfessionalRequestBox key={index} {...info}  ></ProfessionalRequestBox>)
@@ -91,21 +124,23 @@ const Container = styled.main`
 const ProfileSidebar = styled.div`
     margin-top: 19vh;
     width: 17.5vw;
-    //height: 100vh;
+    height: 100%;
     position:fixed;
+    background-color: #333333;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
     margin: auto auto;
     //background-color: #d41e1e;
     width: 14vw;
+    height: 100%;
 
     img {
         margin: 25px auto 0px auto;
         width: 191px;
         height: 191px;
         border-radius: 50%;
-        border: solid 2px #413f3f;
+        border: solid 2px #161616;
     }
 
     p {
@@ -115,17 +150,17 @@ const ContainerInfos = styled.div`
         font-weight: 700;
     }
 
-    p:nth-child(3) {
+    span {
         font-size: 14px;
         color: #d8d8d8;
         margin-top: 5px;
         font-weight: 300;
     }
 
-    p:last-of-type {
+    h2 {
         font-size: 14px;
-        color:white;
-        margin-top: 25px;
+        color: #ffffff;
+        margin-top: 20px;
         font-weight: 300;
     }
 
@@ -133,7 +168,7 @@ const ContainerInfos = styled.div`
         margin: 15px auto;
         width: 14vw;
         height: 15vh;
-        
+        margin-bottom: -10px;
     }
 
     button {
@@ -151,10 +186,8 @@ const ContainerInfos = styled.div`
 const Body = styled.div`
     margin: auto auto;
     width: 65vw;
-    //height: 100%;
     border-left: solid 0.5px #4e4e4e;
     border-right: solid 0.5px #4e4e4e;
-    //background-color: yellow;
     margin-top: 125px;
 `
 const H1 = styled.div`
@@ -169,6 +202,7 @@ const H1 = styled.div`
     background-color: #333333;
     color: white;
     margin-top: 20px;
+    //margin-bottom: 75px;
     h1 {
         font-size: 35px;
     }
@@ -176,6 +210,22 @@ const H1 = styled.div`
     h2 {
         font-size: 15px;
         margin-top: 8px;
+    }
+`
+const NoData = styled.div`
+    margin: 90px  auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 20vh;
+    background-color: #55a381;
+    color: white;
+    border-radius: 8px;
+    
+    h1 {
+        font-size: 35px;
     }
 `
 

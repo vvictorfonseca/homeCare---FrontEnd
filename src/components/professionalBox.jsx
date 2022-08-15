@@ -119,7 +119,7 @@ const Photo = styled.div`
         width: 125px;
         height: 125px;
         border-radius: 100%;
-        border: solid 2px #4e4e4e;
+        border: solid 2px #000000;
     }
 
     p:first-of-type {

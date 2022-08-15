@@ -1,11 +1,31 @@
-import { NavigationType, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 import styled from 'styled-components';
 
+import UserContext from './context/userContext';
 
 export default function ProfessionalHeader() {
 
     const navigate = useNavigate()
+
+    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto, setProfessionalDescription } = useContext(UserContext)
+
+    function logOut() {
+        if (window.confirm("Você deseja se deslogar?")) {
+            window.localStorage.removeItem('professionalToken');
+            window.localStorage.removeItem('professionalCity');
+            window.localStorage.removeItem('professionalFullName');
+            window.localStorage.removeItem('professionalPhoto');
+            window.localStorage.removeItem('professionalDescription')
+            setProfessionalToken(null)
+            setProfessionalCity(null)
+            setProfessionalCity(null)
+            setProfessionalPhoto(null)
+            setProfessionalDescription(null)
+            navigate("/");
+        }
+    }
 
     return (
         <ContainerHeader>
@@ -14,7 +34,9 @@ export default function ProfessionalHeader() {
                 <H2>Professionals</H2>
             </Logo>
             
-            <Options onClick={() => navigate("/homePage/professional")} >Home</Options>
+            <ContainerLogOf>
+                <ion-icon name="log-out-outline" onClick={() => logOut()} ></ion-icon>
+            </ContainerLogOf>
         </ContainerHeader>
     )
 }
@@ -47,16 +69,20 @@ const H2 = styled.h2`
     font-style: italic;
     margin-left: 65px;
 `
-const Options = styled.div`
-    font-size: 16px;
+const ContainerLogOf = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 1.5vw;
-    width: 8.75vw;
-    height: 6vh;
-    border-left: solid 0.5px #4e4e4e;
-    border-right: solid 0.5px #4e4e4e;
-    color: #333333;
-    cursor: pointer;
+    justify-content:center;
+    width: 5vw;
+    height: 9vh;
+    background-color: #4e4e4e;
+    border-radius: 20px;
+    position: absolute;
+    right: 9vh;
+
+    ion-icon{
+        font-size:32px;
+        color: #55a381;
+        cursor: pointer;
+    }
 `

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 
 import axios from "axios"
 import styled from 'styled-components';
@@ -62,7 +61,11 @@ function ClientRequests() {
                 <>
                     {
                         clientJobsData.length === 0 ? (
-                            <p>Você não possui pedidos cadastrados</p>
+                            
+                            <NoData>
+                                    <h1>Você não possui pedidos cadastrados</h1>
+                            </NoData>
+                        
                         ) : (
 
                         clientJobsData.map((jobInfo, index) => {
@@ -104,7 +107,7 @@ const ContainerInfos = styled.div`
         width: 14vw;
         height: 30vh;
         border-radius: 50%;
-        border: solid 1.5px #413f3f;
+        border: solid 2px #1b1b1b;
     }
 
     p {
@@ -122,11 +125,12 @@ const ContainerInfos = styled.div`
     }
 `
 const Body = styled.div`
-    margin: auto auto;
+    margin: 0px auto;
     width: 65vw;
-    height: 100%;
+    height: 100vh;;
     border-left: solid 0.5px #4e4e4e;
     border-right: solid 0.5px #4e4e4e;
+    //background-color: green;
 `
 const H1 = styled.div`
     margin-left: 2px;
@@ -134,7 +138,6 @@ const H1 = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 22vh;
     width: 64.60vw;
     height: 20vh;
     background-color: #333333;
@@ -142,6 +145,24 @@ const H1 = styled.div`
 
     h1 {
         font-size: 35px;
+    }
+`
+
+const NoData = styled.div`
+    margin: 90px  auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 20vh;
+    background-color: #55a381;
+    color: white;
+    border-radius: 8px;
+    
+    h1 {
+        margin: auto auto;
+        font-size: 20px;
     }
 `
 

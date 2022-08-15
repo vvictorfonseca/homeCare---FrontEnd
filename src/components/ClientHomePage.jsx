@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios"
 import styled from 'styled-components';
@@ -11,7 +11,9 @@ import UserContext from "./context/userContext";
 
 function ClientHomePage() {
 
-    const { clientName, clientPhoto, clientCity, type, setType } = useContext(UserContext)
+    const navigate = useNavigate()
+
+    const { clientName, clientPhoto, clientCity, type, setType, reload } = useContext(UserContext)
     const { clientToken } = useContext(UserContext)
 
     const [infoGarden, setInfoGarden] = useState([])
@@ -28,7 +30,7 @@ function ClientHomePage() {
         getGandenProfessionals()
         getCleaningProfessionals()
         getEletricalProfessionals()
-    }, []);
+    }, [reload]);
 
     function getGandenProfessionals() {
         const URL = "http://localhost:5000/professionals/garden"
@@ -85,7 +87,7 @@ function ClientHomePage() {
                     <p>{clientName}</p>
                     <p>{clientCity}</p>
 
-                    <button>Change Location</button>
+                    <button onClick={() => navigate("/Update/ClientAddress")}>Change Location</button>
                 </ContainerInfos>
             </ProfileSidebar>
 
@@ -111,7 +113,10 @@ function ClientHomePage() {
                         ) : type === "garden" ? (
 
                             infoGarden.length === 0 ? (
-                                <h1>Não possui profissionais dessa categoria na sua Região</h1>
+                                
+                                <NoData>
+                                    <h1>Não possuem profissionais dessa categoria em sua Região</h1>
+                                </NoData>
                             
                             ) : (
 
@@ -121,13 +126,36 @@ function ClientHomePage() {
                             )
 
                         ) : type === "cleaning" ? (
-                            infoCleaning.map((info, index) => {
-                                return (<ProfessionalBox key={index} {...info}></ProfessionalBox>)
-                            })
+
+                            infoCleaning.length === 0 ? (
+                                
+                                <NoData>
+                                    <h1>Não possuem profissionais dessa categoria em sua Região</h1>
+                                </NoData>
+                            
+                            ) : (
+
+                                infoCleaning.map((info, index) => {
+                                    return (<ProfessionalBox key={index} {...info}></ProfessionalBox>)
+                                })
+
+                            )
+
                         ) : type === "eletrical" ?(
-                            infoEletrical.map((info, index) => {
-                                return (<ProfessionalBox key={index} {...info}></ProfessionalBox>)
-                            })
+
+                            infoEletrical.length === 0 ? (
+                                
+                                <NoData>
+                                    <h1>Não possuem profissionais dessa categoria em sua Região</h1>
+                                </NoData>
+
+                            ) : (
+
+                                infoEletrical.map((info, index) => {
+                                    return (<ProfessionalBox key={index} {...info}></ProfessionalBox>)
+                                })
+                            )
+                            
                         ) : (
                             <></>
                         )
@@ -142,7 +170,7 @@ function ClientHomePage() {
 
 const Container = styled.main`
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     background-color: #333333;
@@ -150,22 +178,19 @@ const Container = styled.main`
 const ProfileSidebar = styled.div`
     margin-top: 19vh;
     width: 17.5vw;
-    //height: 100vh;
     position:fixed;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
     margin: auto auto;
-    //background-color: white;
     width: 14vw;
-    //height: 100vh;
 
     img {
         margin-top: 25px;
         width: 14vw;
         height: 30vh;
         border-radius: 50%;
-        border: solid 1.5px #413f3f;
+        border: solid 2px #1a1a1a;
     }
 
     p {
@@ -195,26 +220,23 @@ const ContainerInfos = styled.div`
     }
 `
 const Body = styled.div`
-    margin: auto auto;
+    margin: 10px auto;
     width: 65vw;
-    //height: 100vh;
+    height: 100%;
     border-left: solid 0.5px #4e4e4e;
     border-right: solid 0.5px #4e4e4e;
-    //background-color: yellow;
-    margin-top: 125px;
 `
 const H1 = styled.div`
+    margin-top: 20px;
     margin-left: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //margin-top: 22vh;
     width: 64.60vw;
     height: 20vh;
     background-color: #333333;
     color: white;
-    margin-top: 20px;
     h1 {
         font-size: 35px;
     }
@@ -245,6 +267,24 @@ const BoxType = styled.div`
     h1 {
         color:  #333333;
         font-size: 30px;
+    }
+`
+
+const NoData = styled.div`
+    margin: 90px  auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 20vh;
+    background-color: #55a381;
+    color: white;
+    border-radius: 8px;
+    
+    h1 {
+        margin: auto auto;
+        font-size: 20px;
     }
 `
 

@@ -8,7 +8,21 @@ import UserContext from "./context/userContext";
 export default function Header() {
 
     const navigate = useNavigate()
-    const { setType } = useContext(UserContext)
+    const { setType, setClientToken, setClientName, setClientCity, setClientPhoto } = useContext(UserContext)
+    
+    function logOut() {
+        if (window.confirm("Você deseja se deslogar?")) {
+            window.localStorage.removeItem('token');
+            window.localStorage.removeItem('city');
+            window.localStorage.removeItem('fullName');
+            window.localStorage.removeItem('photo');
+            setClientToken(null);
+            setClientName(null);
+            setClientCity(null);
+            setClientPhoto(null);
+            navigate("/");
+        }
+    }
 
     return (
         <ContainerHeader>
@@ -26,6 +40,10 @@ export default function Header() {
                 navigate("/requests/client")
                 setType("")
             }}>Requests</Options>
+
+            <ContainerLogOf>
+                <ion-icon name="log-out-outline" onClick={() => logOut()} ></ion-icon>
+            </ContainerLogOf>
         </ContainerHeader>
     )
 }
@@ -38,6 +56,7 @@ const ContainerHeader = styled.div`
     display:flex;
     align-items: center;
     position: fixed;
+    position: relative;
     z-index: 1;
 `
 
@@ -70,4 +89,21 @@ const Options = styled.div`
     border-right: solid 0.5px #4e4e4e;
     color: #55a381;
     cursor: pointer;
+`
+const ContainerLogOf = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 5vw;
+    height: 9vh;
+    background-color: #4e4e4e;
+    border-radius: 20px;
+    position: absolute;
+    right: 9vh;
+
+    ion-icon{
+        font-size:32px;
+        color: #55a381;
+        cursor: pointer;
+    }
 `

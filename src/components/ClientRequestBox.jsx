@@ -1,13 +1,10 @@
 import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import axios from "axios"
 
 import UserContext from "./context/userContext"
 
 function ClientRequestBox(jobInfo) {
-
-    const navigate = useNavigate()
 
     const { clientToken, setReload, reload } = useContext(UserContext)
     console.log("token", clientToken)

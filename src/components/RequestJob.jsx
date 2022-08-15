@@ -138,12 +138,13 @@ const Body = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto auto;
+    margin: 0px auto;
     width: 65vw;
     height: 100%;
     border-left: solid 0.5px #4e4e4e;
 `
 const ProfessionalBox = styled.div`
+    margin-top: -180px;
     width: 50vw;
     height: 45vh;
     border-radius: 8px;

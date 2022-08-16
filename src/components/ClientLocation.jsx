@@ -37,12 +37,9 @@ function ClientLocation() {
 
         const urlAddress = "https://home-care-app.herokuapp.com/update/location"
 
-        console.log("entrou aqui")
-
         const promise = axios.put(urlAddress, clientAddressRegister, config)
         
         promise.then(response => {
-            console.log("entrou carai", response.status)
             const city = JSON.stringify(clientAddressRegister.city)
             localStorage.setItem('city', city)
             update ? setUpdate(false) : setUpdate(true)

@@ -28,8 +28,6 @@ function SignUpClient() {
         zipCode: clientAddress.clientZip
     }
 
-    console.log("client", clientInfoRegister)
-
     function registerClient(e) {
         e.preventDefault()
 
@@ -37,7 +35,6 @@ function SignUpClient() {
         
         const promise = axios.post(urlLogin, clientInfoRegister)
         promise.then(response => {
-            console.log(response.status)
             setInterval(registerAddress(e), 1000)
             navigate("/")
         })
@@ -47,14 +44,12 @@ function SignUpClient() {
     }
 
     function registerAddress(e) {
-        console.log("entrei no enredereço")
         e.preventDefault()
 
         const urlAddress = "https://home-care-app.herokuapp.com/sign-up/client/address"
 
         const promise = axios.post(urlAddress, clientAddressRegister)
         promise.then(response => {
-            console.log(response.data)
         })
         promise.catch(err => {
             alert("erro no edereço")

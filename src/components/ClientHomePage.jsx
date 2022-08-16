@@ -39,7 +39,6 @@ function ClientHomePage() {
 
         promise.then(response => {
             const { data } = response
-            console.log("garden", data)
             setInfoGarden(data)
         })
         promise.catch(err => {
@@ -54,7 +53,6 @@ function ClientHomePage() {
 
         promise.then(response => {
             const { data } = response
-            console.log("cleaning", data)
             setInfoCleaning(data)
         })
         promise.catch(err => {
@@ -69,7 +67,6 @@ function ClientHomePage() {
 
         promise.then(response => {
             const { data } = response
-            console.log("electrical", data)
             setInfoEletrical(data)
         })
         promise.catch(err => {
@@ -107,7 +104,7 @@ function ClientHomePage() {
 
                                 <BoxType onClick={() => setType("cleaning")}> <h1>Cleaning</h1> </BoxType>
 
-                                <BoxType onClick={() => setType("eletrical")}> <h1>EletricalService</h1> </BoxType>
+                                <BoxType onClick={() => setType("eletrical")}> <h1>Electrical Service</h1> </BoxType>
                             </Boxtypes>
 
                         ) : type === "garden" ? (

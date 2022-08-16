@@ -42,12 +42,9 @@ function RequestJob() {
     function handleJobRequest(objRequest) {
         const URL = "https://home-care-app.herokuapp.com/request/job"
 
-        console.log("objeto aqui", objRequest)
-
         const promise = axios.post(URL, objRequest, config)
 
         promise.then(response => {
-            console.log("deu bom", response.status);
             alert("Pedido feito com sucesso, aguarde confirmação do profissional!")
             setType("")
             navigate("/homePage/client")

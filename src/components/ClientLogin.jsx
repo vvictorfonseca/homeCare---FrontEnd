@@ -18,17 +18,12 @@ function ClientLogin() {
         password: clientLogin.clientPassword
     }
 
-    console.log("data", objClientLogin)
-
     function loginClient(e) {
-        console.log("entrou")
         e.preventDefault()
 
         const urlLogin = "https://home-care-app.herokuapp.com/sign-in/client"
 
         const promise = axios.post(urlLogin, objClientLogin);
-
-        console.log("promise", promise)
 
         promise.then(response => {
             const { data } = response;
@@ -50,7 +45,6 @@ function ClientLogin() {
             navigate("/homePage/client")
         });
         promise.catch(err => {
-            console.log("erro", err)
             alert('Usuário inexiste ou usuário e senha incorretos!')
         })
     }

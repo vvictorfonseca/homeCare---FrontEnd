@@ -43,7 +43,6 @@ function ProfessionalRequestBox(info) {
         const promise = axios.put(URL, objUpdate, config)
 
         promise.then(response => {
-            console.log("deu bom em", response.status)
             {refresh ? setRefresh(false) : setRefresh(true)}
             alert("Você comfirmou o trabalho!")
         })
@@ -55,13 +54,10 @@ function ProfessionalRequestBox(info) {
     function deleteJobRequest() {
         if(window.confirm("Você deseja cancelar essa solicitação de trabalho?")) {
 
-            console.log("iddd", info.id)
-
             const URL = `https://home-care-app.herokuapp.com/delete/job/${info.id}`
 
             const promise = axios.delete(URL, config)
             promise.then(response => {
-                console.log("apagou em", response.status)
                 {refresh ? setRefresh(false) : setRefresh(true)}
             })
         }

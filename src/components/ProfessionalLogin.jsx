@@ -27,7 +27,6 @@ function ProfessionalLogin() {
 
         promise.then(response => {
             const { data } = response;
-            console.log("requisição", data)
             
             const professionalToken = JSON.stringify(data.token)
             const professionalName = JSON.stringify(data.fullName)

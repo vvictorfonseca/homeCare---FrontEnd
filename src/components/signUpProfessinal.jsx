@@ -32,7 +32,7 @@ function SignUpProfessional() {
             navigate("/")
         })
         promise.catch(err => {
-            alert('Preencha os campos corretamente')
+            alert('Preencha os campos corretamente. Os tipos possíveis são: garden | cleaning | electricalService')
         })
     }
 
@@ -46,12 +46,12 @@ function SignUpProfessional() {
 
                 <div>
                     <input type="string" placeholder="Location (ex: Rio de janeiro)" value={proRegister.proCity} onChange={(e) => setProRegister({ ...proRegister, proCity: e.target.value })} />
-                    <input type="string" placeholder="Type" value={proRegister.proType} onChange={(e) => setProRegister({ ...proRegister, proType: e.target.value })} />
+                    <input type="string" placeholder="Phone (xx) xxxxx-xxxx" value={proRegister.proPhoneNumber} onChange={(e) => setProRegister({ ...proRegister, proPhoneNumber: e.target.value })}  />
                 </div>
 
                 <input type="string" placeholder="Profile Photo" value={proRegister.proProfilePhoto} onChange={(e) => setProRegister({ ...proRegister, proProfilePhoto: e.target.value })} />
-                <input type="string" placeholder="Phone Number (xx) xxxxx-xxxx" value={proRegister.proPhoneNumber} onChange={(e) => setProRegister({ ...proRegister, proPhoneNumber: e.target.value })} />
-
+                <input type="string" placeholder="Type: garden | cleaning | electricalService" value={proRegister.proType} onChange={(e) => setProRegister({ ...proRegister, proType: e.target.value })} />
+                
                 <button type="submit">Cadastrar</button>
             </form>
         )

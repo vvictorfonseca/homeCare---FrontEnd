@@ -7,7 +7,6 @@ import UserContext from "./context/userContext"
 function ClientRequestBox(jobInfo) {
 
     const { clientToken, setReload, reload } = useContext(UserContext)
-    console.log("token", clientToken)
 
     const params = jobInfo.id
 
@@ -20,13 +19,10 @@ function ClientRequestBox(jobInfo) {
                 }
             }
 
-            console.log("params", params)
-
             const URL = `https://home-care-app.herokuapp.com/delete/job/${params}`
 
             const promise = axios.delete(URL, config)
             promise.then(response => {
-                console.log("apagou em", response.status)
                 {reload ? setReload(false) : setReload(true)}
             })
         }

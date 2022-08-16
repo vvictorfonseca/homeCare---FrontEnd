@@ -32,7 +32,6 @@ function ProfessionalHomePage() {
 
         promise.then(response => {
             const { data } = response
-            console.log("professionalJobs", data)
             setProfessionalJobsData(data)
         })
         promise.catch(err => {
@@ -50,7 +49,6 @@ function ProfessionalHomePage() {
         const promise = axios.put(URL, obj, config)
 
         promise.then(response => {
-            console.log("deu bom", response.status)
             const professionalDescription = JSON.stringify(obj.description)
             localStorage.setItem('professinalDescription', professionalDescription)
             update ? setUpdate(false) : setUpdate(true)
@@ -115,7 +113,7 @@ function ProfessionalHomePage() {
 }
 
 const Container = styled.main`
-    width: 100vw;
+    //width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;

@@ -33,7 +33,6 @@ function ClientRequests() {
         promise.then(response => {
             const { data } = response
             setClientJobsData(data)
-            console.log("clientJobs", data)
         })
         promise.catch(err => {
             alert("Não foi possível pegar seus pedidos")

@@ -28,6 +28,8 @@ function SignUpClient() {
         zipCode: clientAddress.clientZip
     }
 
+    console.log("client", clientInfoRegister)
+
     function registerClient(e) {
         e.preventDefault()
 

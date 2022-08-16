@@ -123,8 +123,8 @@ function SignIn() {
                     <H1>HomeCare</H1>
                     <H2>Professionals</H2>
                 </Text>
-                <Link  to="/signIn/professional"> <button>Logar</button> </Link>
-                <Link to="/signUp/professional"> <button>Cadastrar</button> </Link>
+                {loadProInputs}
+                <Link to="/signUp/professional"> <p>Não tem uma conta como cliente? Cadastre-se!</p> </Link>
             </Professional>
             
             <Client>
@@ -132,8 +132,8 @@ function SignIn() {
                     <H1Client>HomeCare</H1Client>
                     <H2Client>Clients</H2Client>
                 </TextClient>
-                <Link to="/sign-in/client"><button>Logar</button></Link>
-                <Link to="/signUp/client"><button>Cadastrar</button></Link>
+                {loadClientInputs}
+                <Link to="/signUp/client"> <p>Não tem uma conta como cliente? Cadastre-se!</p> </Link>
             </Client>
         
         </Container>
@@ -171,7 +171,7 @@ const Container = styled.div`
 
     button {
         width: 22vw;
-        height: 8vh;
+        height: 6vh;
         border-radius: 6px;
         border: none;
         margin-top: 20px;

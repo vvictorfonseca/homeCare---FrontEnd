@@ -63,8 +63,7 @@ function ClientRequestBox(jobInfo) {
 }
 
 const Box = styled.div`
-    margin-bottom: -180px;
-    margin: 25px auto;
+    margin: 0px auto 25px auto;
     width: 50vw;
     height: 45vh;
     border-radius: 8px;

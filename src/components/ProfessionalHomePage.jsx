@@ -26,7 +26,7 @@ function ProfessionalHomePage() {
     }, [refresh]);
 
     function getProfessionalJobs() {
-        const URL = "http://localhost:5000/jobs/professional"
+        const URL = "https://home-care-app.herokuapp.com/jobs/professional"
 
         const promise = axios.get(URL, config)
 
@@ -45,7 +45,7 @@ function ProfessionalHomePage() {
     }
 
     function updateDescription() {
-        const URL = "http://localhost:5000/update/description"
+        const URL = "https://home-care-app.herokuapp.com/update/description"
 
         const promise = axios.put(URL, obj, config)
 

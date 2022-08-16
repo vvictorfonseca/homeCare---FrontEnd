@@ -169,7 +169,7 @@ function ClientHomePage() {
 }
 
 const Container = styled.main`
-    width: 100vw;
+    //width: 100vw;
     height: 100%;
     display: flex;
     flex-wrap: wrap;

@@ -93,7 +93,7 @@ function ClientLocation() {
 }
 
 const Container = styled.div`
-    width: 100vw;
+    //width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +150,7 @@ const Container = styled.div`
     }
 `
 const ClientAddress = styled.div`
-    margin: 140px auto;
+    margin: 26px auto;
     box-sizing: border-box;
     background-color: #333333;
     display: flex;

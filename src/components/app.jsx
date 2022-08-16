@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import GlobalStyle from "../assets/globalStyle";
 import SignIn from "./signIn";
 import ClientLogin from "./ClientLogin";
+import ProfessionalLogin from "./ProfessionalLogin";
 import SignUpClient from "./signUpClient";
 import SignUpProfessional from "./signUpProfessinal";
 import ProfessionalHomePage from "./ProfessionalHomePage";
@@ -102,6 +103,7 @@ function App() {
                         <Route path="/signUp/professional" element={<SignUpProfessional />} />
                         <Route path="/signUp/client" element={<SignUpClient />} />
                         <Route path="/sign-in/client" element={<ClientLogin />} />
+                        <Route path="/sign-in/professional" element={<ProfessionalLogin />} />
                         <Route path="/homePage/professional" element={<ProfessionalHomePage />} />
                         <Route path="/homePage/client" element={<ClientHomePage />} />
                         <Route path="/request/job" element={<RequestJob />} />

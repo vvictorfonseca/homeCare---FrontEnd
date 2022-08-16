@@ -83,7 +83,7 @@ function ClientRequests() {
 }
 
 const Container = styled.main`
-    width: 100vw;
+    //width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
@@ -127,7 +127,7 @@ const ContainerInfos = styled.div`
 const Body = styled.div`
     margin: 0px auto;
     width: 65vw;
-    height: 100vh;;
+    //height: 100%;;
     border-left: solid 0.5px #4e4e4e;
     border-right: solid 0.5px #4e4e4e;
     //background-color: green;

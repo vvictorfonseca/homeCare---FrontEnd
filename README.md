@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# <p align = "center"> HomeCare </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align = "center">
+  <img  width="150" src="https://www.clipartmax.com/png/small/298-2983623_cleaning-services-icon-png.png" alt="Cleaning Services Icon Png @clipartmax.com">
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
+##  :clipboard: Descrição
 
-### `npm start`
+HomeCare é uma aplicação de prestação de serviços domésticos. Profissionais podem se cadastrar e escolhero tipo de serviço que irá prestar, FAXINA, JARDINAGEM ou SERVIÇOS ELÉTRICOS. Por outro lado, qualquer pessoa que necessita de algum serviço desse tipo, pode se cadastrar como cliente e contratar o serviço desses profissionais.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+***
+##  :hammer: Principais Funcionalidades
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Profissionais podem criar uma descrição e atualizá-la quando quiser.
+- Profissionais recebem a notificação de alguma reserva de serviço feito por algum cliente e possuem a opção de aceitar ou não o trabalho. Caso rejeite, a solicitação é apagada imediatamente.
+- Na página dos clientes, os profissionais são filtrados a partir de sua localização.
+- Clientes podem atualizar sua localização a qualquer momento.
+- Clientes podem escolher a categoria de serviço que querem contratar.
+- Clientes podem solicitar um trabalho escolhendo a data para que o serviço seja prestado.
+- Clientes possuem uma aba "requests" contendo todas suas solicitações de serviços e seus status, aceito ou pendente.
 
-### `npm test`
+***
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :computer:	 Tecnologias e Ferramentas usadas
 
-### `npm run build`
+- React.js
+- Node.js
+- Express.js
+- PostgresSQL
+- Prisma
+- JWTs & refresh tokens
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+***
+## 🏁 Rodando a aplicação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Certifique-se que voce tem a ultima versão estável do Node.js e npm rodando localmente.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Primeiro, faça o clone desse repositório na sua maquina:
 
-### `npm run eject`
+```
+git clone https://github.com/vvictorfonseca/homeCare-frontEnd-Autoral.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finalizado o processo, é só inicializar o servidor. OBS: o back-end deve estar rodando.
+```
+npm start
+```

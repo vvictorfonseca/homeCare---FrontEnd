@@ -2,57 +2,57 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
-import UserContext from './context/userContext';
+import UserContext from '../../context/userContext';
 
 function ProfessionalBox({ fullName, city, type, phoneNumber, profilePhoto, description, id }) {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const { setRequestJobInfo } = useContext(UserContext)
+  const { setRequestJobInfo } = useContext(UserContext)
 
-    return (
-        <Boxes>
-            <Body>
-                <Box>
-                <Photo >
-                    <img src={profilePhoto} />
-                    <p>{type}</p>
-                        
-                    
-                    <button onClick={() => {
-                        setRequestJobInfo({
-                            id: id,
-                            fullName: fullName,
-                            city: city,
-                            phoneNumber: phoneNumber,
-                            profilePhoto: profilePhoto,
-                            description: description,
-                            type: type
-                        })
-                        navigate("/request/job")
-                    }} >Agende aqui</button>
+  return (
+    <Boxes>
+      <Body>
+        <Box>
+          <Photo >
+            <img src={profilePhoto} />
+            <p>{type}</p>
 
-                
-                </Photo>
-                <Infos>
-                    <p>{fullName}</p>
-                    <p>{city} </p>
 
-                    <ProfessionalDescription>
-                        
-                        {description == null ? (
-                            <p>O profissional não possui descrição</p>
-                        ) : (
-                            <p>{description}</p>
-                        )}
-                    
-                    </ProfessionalDescription>
-                </Infos>
-                </Box>
-            </Body>
-        </Boxes>
+            <button onClick={() => {
+              setRequestJobInfo({
+                id: id,
+                fullName: fullName,
+                city: city,
+                phoneNumber: phoneNumber,
+                profilePhoto: profilePhoto,
+                description: description,
+                type: type
+              })
+              navigate("/request/job")
+            }} >Agende aqui</button>
 
-    )
+
+          </Photo>
+          <Infos>
+            <p>{fullName}</p>
+            <p>{city} </p>
+
+            <ProfessionalDescription>
+
+              {description == null ? (
+                <p>O profissional não possui descrição</p>
+              ) : (
+                <p>{description}</p>
+              )}
+
+            </ProfessionalDescription>
+          </Infos>
+        </Box>
+      </Body>
+    </Boxes>
+
+  )
 }
 
 const Boxes = styled.div`
@@ -194,7 +194,6 @@ const ProfessionalDescription = styled.div`
     border-radius: 8px;
     display: flex;
     align-items:center;
-    justify-content: center;
     width: 25vw;
     height: 20vh;
     background-color: #e2e2e2;
@@ -202,6 +201,8 @@ const ProfessionalDescription = styled.div`
     p:first-of-type {
         margin-top: -50px;
         font-size: 13px;
+        text-align: center;
+        margin: auto auto;
     }
 `
 

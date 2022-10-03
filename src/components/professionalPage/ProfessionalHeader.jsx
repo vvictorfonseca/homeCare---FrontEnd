@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import styled from 'styled-components';
 
-import UserContext from './context/userContext';
+import UserContext from '../../context/userContext';
 
 export default function ProfessionalHeader() {
 

@@ -2,7 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
 
-import UserContext from "./context/userContext"
+import UserContext from "../../context/userContext"
 
 function ClientRequestBox(jobInfo) {
 
@@ -41,7 +41,7 @@ function ClientRequestBox(jobInfo) {
                     <p>{jobInfo.professionals.fullName}</p>
                     <p>{jobInfo.professionals.city}</p>
                     <p>{jobInfo.date}</p>
-                    <p>Status: {jobInfo.isConfirmed === true ? "Confirmado" : "Pendente"}</p>
+                    <p>Status: {jobInfo.isConfirmed === "Confirmed" ? "Confirmado" : "Pendente"}</p>
 
                     <ProfessionalDescription>
                         

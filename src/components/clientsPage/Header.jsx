@@ -3,13 +3,16 @@ import { useContext } from 'react';
 
 import styled from 'styled-components';
 
-import UserContext from "./context/userContext";
+import UserContext from "../../context/userContext";
+import ModalContext from "../../context/modalContext";
 
 export default function Header() {
 
     const navigate = useNavigate()
     const { setType, setClientToken, setClientName, setClientCity, setClientPhoto } = useContext(UserContext)
     
+    const { modalIsOpen, setModalIsOpen } = useContext(ModalContext)
+
     function logOut() {
         if (window.confirm("Você deseja se deslogar?")) {
             window.localStorage.removeItem('token');
@@ -25,7 +28,7 @@ export default function Header() {
     }
 
     return (
-        <ContainerHeader>
+        <ContainerHeader style={{ opacity: modalIsOpen  === true ? `50%` : `100%`}}>
             <Logo>
                 <H1>HomeCare</H1>
                 <H2>Clients</H2>
@@ -39,6 +42,7 @@ export default function Header() {
             <Options onClick={() => {
                 navigate("/requests/client")
                 setType("")
+                setModalIsOpen(false)
             }}>Requests</Options>
 
             <ContainerLogOf>

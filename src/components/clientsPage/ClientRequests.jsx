@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Header from "./Header";
 import ClientRequestBox from "./ClientRequestBox";
 
-import UserContext from "./context/userContext";
+import UserContext from "../../context/userContext";
 
 function ClientRequests() {
 

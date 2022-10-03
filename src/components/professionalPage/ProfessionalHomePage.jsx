@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import axios from "axios"
 import { useContext, useState, useEffect } from 'react';
 
-import UserContext from './context/userContext';
+import UserContext from '../../context/userContext';
 
 import ProfessionalHeader from "./ProfessionalHeader"
 import ProfessionalRequestBox from './ProfessionalRequestJob';

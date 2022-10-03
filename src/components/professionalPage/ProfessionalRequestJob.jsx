@@ -2,7 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import axios from "axios"
 
-import UserContext from "./context/userContext"
+import UserContext from "../../context/userContext"
 
 function ProfessionalRequestBox(info) {
 
@@ -83,11 +83,11 @@ function ProfessionalRequestBox(info) {
                 </Address>
 
                 <Status>
-                    <p>{info.isConfirmed === true ? "Confirmado" : "Pendente"}</p>
+                    <p>{info.isConfirmed === "Confirmed" ? "Confirmado" : "Pendente"}</p>
                 </Status>
 
                 {
-                    info.isConfirmed === false ? (
+                    info.isConfirmed === "Pending" ? (
 
                         <Buttons>
                             <button onClick={() => acceptJobRequest()} >Aceitar</button>

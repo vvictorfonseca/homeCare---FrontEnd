@@ -1,21 +1,77 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
+import UserContext from '../../context/userContext';
 import ModalContext from "../../context/modalContext";
 
 function ModalComponent({ info }) {
+  const { clientToken, refresh, setRefresh } = useContext(UserContext)
   const { setModalIsOpen } = useContext(ModalContext)
+  console.log("info", info)
 
   const [evaluate, setEvaluate] = useState(false)
   const [evaluateContent, setEvaluateContent] = useState("")
 
   let professionalName = ""
   let date = ""
+  let jobId = ""
+  let professionalId = ""
 
   info.forEach(element => {
     professionalName = element.professionals.fullName
+    professionalId = element.professionals.id
     date = element.date
+    jobId = element.id
   })
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${clientToken}`
+    }
+  }
+
+  const objUpdate = {
+    professionalId: professionalId,
+    date: date
+  }
+
+  function updateJobToDone() {
+    const URL = "https://home-care-app.herokuapp.com/update/job/done"
+
+    const promise = axios.put(URL, objUpdate, config)
+    promise.then(response => {
+      { refresh ? setRefresh(false) : setRefresh(true) }
+      setModalIsOpen(false)
+      alert("Avaliação feita com sucesso")
+    })
+    promise.catch(err => {
+      alert("Não foi possível atualizar o status do trabalho")
+    })
+
+  }
+
+  const objEvaluate = {
+    jobId: jobId,
+    content: evaluateContent
+  }
+
+  function sendEvaluate() {
+    const URL = "https://home-care-app.herokuapp.com/evaluate/job"
+
+    if (objEvaluate.content.length < 6) {
+      alert("A avaliação precisa ter mais de 6 caracteres")
+    } else {
+      const promise = axios.post(URL, objEvaluate, config)
+      promise.then(() => {
+        updateJobToDone()
+      })
+      promise.catch(err => {
+        console.log(err)
+        alert("Não foi possível enviar a avaliação")
+      })
+    }
+  }
 
   return (
     <ModalBackground>
@@ -40,10 +96,10 @@ function ModalComponent({ info }) {
                 <H2>{professionalName} fez um serviço em sua casa no dia {date}</H2>
                 <H3>Escreva sua avaliação abaixo</H3>
               </ModalHeader>
-              
+
               <EvaluateBox>
                 <TextArea placeholder="Escreva sua avaliação aqui..." value={evaluateContent} onChange={(e) => setEvaluateContent(e.target.value)} ></TextArea>
-                <Send>Enviar</Send>
+                <Send onClick={() => sendEvaluate()} >Enviar</Send>
               </EvaluateBox>
             </>
           )

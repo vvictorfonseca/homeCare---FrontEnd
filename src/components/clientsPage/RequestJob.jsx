@@ -35,24 +35,27 @@ function RequestJob() {
     let dateParts = dateFormat.split("/")
     let dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
 
-    if (dayjs().isAfter(dateObject)) {
-      alert(`Escolha uma data válida. Após ${dayjs().format('DD/MM/YYYY')}`)
-    } else {
+    // if (dayjs().isAfter(dateObject)) {
+    //   alert(`Escolha uma data válida. Após ${dayjs().format('DD/MM/YYYY')}`)
+    // } else {
+    //   const objRequest = {
+    //     professionalId: requestJobInfo.id,
+    //     date: dateFormat
+    //   }
+
+    //   handleJobRequest(objRequest)
+    // }
+
       const objRequest = {
         professionalId: requestJobInfo.id,
         date: dateFormat
       }
 
-      console.log("aqui", objRequest)
-
       handleJobRequest(objRequest)
-    }
   }
 
   function handleJobRequest(objRequest) {
     const URL = "https://home-care-app.herokuapp.com/request/job"
-    console.log("entrei no request");
-    console.log("config", config)
 
     const promise = axios.post(URL, objRequest, config)
 

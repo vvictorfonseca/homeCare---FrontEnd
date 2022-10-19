@@ -6,107 +6,111 @@ import UserContext from "../../context/userContext"
 
 function ProfessionalRequestBox(info) {
 
-    const { professionalToken, refresh, setRefresh } = useContext(UserContext)
+  const { professionalToken, refresh, setRefresh } = useContext(UserContext)
 
-    const config = {
-        headers: {
-            Authorization: `Bearer ${professionalToken}`
-        }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${professionalToken}`
     }
+  }
 
-    let clientId = ""
-    let city = ""
-    let district = ""
-    let street = ""
-    let number = ""
-    let complement = ""
-    let zipCode = ""
+  let clientId = ""
+  let city = ""
+  let district = ""
+  let street = ""
+  let number = ""
+  let complement = ""
+  let zipCode = ""
 
-    info.clients.address.forEach(element => {
-        city = element.city
-        district = element.district
-        street = element.street
-        number = element.number
-        complement = element.complement
-        zipCode = element.zipCode
-        clientId = element.clientId
+  info.clients.address.forEach(element => {
+    city = element.city
+    district = element.district
+    street = element.street
+    number = element.number
+    complement = element.complement
+    zipCode = element.zipCode
+    clientId = element.clientId
+  })
+
+  const objUpdate = {
+    clientId: clientId,
+    date: info.date
+  }
+
+  function acceptJobRequest() {
+    const URL = "https://home-care-app.herokuapp.com/update/request"
+
+    const promise = axios.put(URL, objUpdate, config)
+
+    promise.then(response => {
+      { refresh ? setRefresh(false) : setRefresh(true) }
+      alert("Você comfirmou o trabalho!")
     })
+    promise.catch(err => {
+      console.log("putz", err)
+    })
+  }
 
-    const objUpdate = {
-        clientId: clientId,
-        date: info.date
+  function deleteJobRequest() {
+    if (window.confirm("Você deseja cancelar essa solicitação de trabalho?")) {
+
+      const URL = `https://home-care-app.herokuapp.com/delete/job/${info.id}`
+
+      const promise = axios.delete(URL, config)
+      promise.then(response => {
+        { refresh ? setRefresh(false) : setRefresh(true) }
+      })
     }
+  }
 
-    function acceptJobRequest() {
-        const URL = "https://home-care-app.herokuapp.com/update/request"
+  return (
 
-        const promise = axios.put(URL, objUpdate, config)
+    <Box>
+      <Photo >
+        <img src={info.clients.profilePhoto}></img>
+        <p>{info.clients.fullName}</p>
+        <p>{city}</p>
 
-        promise.then(response => {
-            {refresh ? setRefresh(false) : setRefresh(true)}
-            alert("Você comfirmou o trabalho!")
-        })
-        promise.catch(err => {
-            console.log("putz", err)
-        })
-    }
+        <p>{info.date}</p>
+      </Photo>
 
-    function deleteJobRequest() {
-        if(window.confirm("Você deseja cancelar essa solicitação de trabalho?")) {
+      <Infos>
+        <Address>
+          <p>Bairro: {district}</p>
+          <p>Rua: {street}</p>
+          <p>Número: {number} / Complemento: {complement}</p>
+          <p>CEP: {zipCode}</p>
+        </Address>
 
-            const URL = `https://home-care-app.herokuapp.com/delete/job/${info.id}`
+        <Status>
+          <p>{info.isConfirmed === "Confirmed" ? "Confirmado" : info.isConfirmed === "Done" ? "Finalizado" : "Pendente"}</p>
+        </Status>
 
-            const promise = axios.delete(URL, config)
-            promise.then(response => {
-                {refresh ? setRefresh(false) : setRefresh(true)}
-            })
+        {
+          info.isConfirmed === "Pending" ? (
+
+            <Buttons>
+              <button onClick={() => acceptJobRequest()} >Aceitar</button>
+              <button onClick={() => deleteJobRequest()}>Recusar</button>
+            </Buttons>
+
+          ) : (
+
+            info.isConfirmed !== "Done" ? (
+              <Buttons>
+                <button onClick={() => deleteJobRequest()}>Cancelar</button>
+              </Buttons>
+            ) : (
+              <></>
+            )
+
+          )
         }
-    }
 
-    return (
+      </Infos>
+    </Box>
 
-        <Box>
-            <Photo >
-                <img src={info.clients.profilePhoto}></img>
-                <p>{info.clients.fullName}</p>
-                <p>{city}</p>
-
-                <p>{info.date}</p>
-            </Photo>
-
-            <Infos>
-                <Address>
-                    <p>Bairro: {district}</p>
-                    <p>Rua: {street}</p>
-                    <p>Número: {number} / Complemento: {complement}</p>
-                    <p>CEP: {zipCode}</p>
-                </Address>
-
-                <Status>
-                    <p>{info.isConfirmed === "Confirmed" ? "Confirmado" : "Pendente"}</p>
-                </Status>
-
-                {
-                    info.isConfirmed === "Pending" ? (
-
-                        <Buttons>
-                            <button onClick={() => acceptJobRequest()} >Aceitar</button>
-                            <button onClick={() => deleteJobRequest()}>Recusar</button>
-                        </Buttons>
-
-                    ) : (
-
-                        <Buttons>
-                            <button onClick={() => deleteJobRequest()}>Cancelar</button>
-                        </Buttons>
-
-                    )
-                }
-
-            </Infos>
-        </Box>
-
-    )
+  )
 }
 
 const Box = styled.div`

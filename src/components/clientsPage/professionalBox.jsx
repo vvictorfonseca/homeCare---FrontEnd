@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import UserContext from '../../context/userContext';
@@ -31,6 +31,10 @@ function ProfessionalBox({ fullName, city, type, phoneNumber, profilePhoto, desc
               })
               navigate("/request/job")
             }} >Agende aqui</button>
+
+            <button onClick={() => {
+              navigate(`/evaluations/${id}`)
+            }}>Avaliações</button>
 
 
           </Photo>
@@ -111,6 +115,7 @@ const Box = styled.div`
 const Photo = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     //justify-content: center;
     width: 15vw;
     background-color: #55a381;
@@ -132,7 +137,7 @@ const Photo = styled.div`
     }
 
     button {
-        margin: 40px auto;
+        //margin: 40px auto;
         border-radius: 8px;
         border: none;
         width: 10vw;
@@ -140,6 +145,10 @@ const Photo = styled.div`
         background-color: #333333;
         color: white;
         cursor: pointer;
+
+        &:last-of-type {
+          margin-top: 10px;
+        }
     }
 `
 const Infos = styled.div`

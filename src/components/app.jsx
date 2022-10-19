@@ -15,6 +15,7 @@ import ClientRequests from "./clientsPage/ClientRequests";
 import ClientLocation from "./clientsPage/ClientLocation";
 import UserContext from "../context/userContext";
 import ModalContext from "../context/modalContext";
+import EvaluatePage from "./clientsPage/EvaluaionsPage";
 
 function App() {
 
@@ -106,6 +107,7 @@ function App() {
               <Route path="/sign-in/professional" element={<ProfessionalLogin />} />
               <Route path="/homePage/professional" element={<ProfessionalHomePage />} />
               <Route path="/homePage/client" element={<ClientHomePage />} />
+              <Route path="/evaluations/:professionalId" element={<EvaluatePage />} />
               <Route path="/request/job" element={<RequestJob />} />
               <Route path="/requests/client" element={<ClientRequests />} />
               <Route path="/Update/ClientAddress" element={<ClientLocation />} />

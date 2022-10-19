@@ -103,8 +103,8 @@ const ContainerInfos = styled.div`
 
     img {
         margin-top: 25px;
-        width: 14vw;
-        height: 30vh;
+        width: 185px;
+        height: 185px;
         border-radius: 50%;
         border: solid 2px #1b1b1b;
     }

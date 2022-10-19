@@ -43,7 +43,6 @@ function ModalComponent({ info }) {
     promise.then(response => {
       { refresh ? setRefresh(false) : setRefresh(true) }
       setModalIsOpen(false)
-      alert("Avaliação feita com sucesso")
     })
     promise.catch(err => {
       alert("Não foi possível atualizar o status do trabalho")
@@ -65,6 +64,7 @@ function ModalComponent({ info }) {
       const promise = axios.post(URL, objEvaluate, config)
       promise.then(() => {
         updateJobToDone()
+        alert("Avaliação feita com sucesso!")
       })
       promise.catch(err => {
         console.log(err)
@@ -86,7 +86,7 @@ function ModalComponent({ info }) {
                 <H3>Deseja fazer uma avaliação?</H3>
               </ModalHeader>
               <ButtonsBox>
-                <Button onClick={() => setModalIsOpen(false)}>Não</Button>
+                <Button onClick={() => updateJobToDone()}>Não</Button>
                 <Button onClick={() => setEvaluate(true)} >Sim</Button>
               </ButtonsBox>
             </>

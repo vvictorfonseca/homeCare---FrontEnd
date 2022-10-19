@@ -6,56 +6,62 @@ import UserContext from "../../context/userContext"
 
 function ClientRequestBox(jobInfo) {
 
-    const { clientToken, setReload, reload } = useContext(UserContext)
+  const { clientToken, setReload, reload } = useContext(UserContext)
 
-    const params = jobInfo.id
+  const params = jobInfo.id
 
-    function deleteRequest() {
-        if(window.confirm("Você deseja cancelar sua solicitação?")) {
+  function deleteRequest() {
+    if (window.confirm("Você deseja cancelar sua solicitação?")) {
 
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${clientToken}`
-                }
-            }
-
-            const URL = `https://home-care-app.herokuapp.com/delete/job/${params}`
-
-            const promise = axios.delete(URL, config)
-            promise.then(response => {
-                {reload ? setReload(false) : setReload(true)}
-            })
+      const config = {
+        headers: {
+          Authorization: `Bearer ${clientToken}`
         }
+      }
+
+      const URL = `https://home-care-app.herokuapp.com/delete/job/${params}`
+
+      const promise = axios.delete(URL, config)
+      promise.then(response => {
+        { reload ? setReload(false) : setReload(true) }
+      })
     }
+  }
 
-    return (
-        
-            <Box>
-                <Photo >
-                    <img src={jobInfo.professionals.profilePhoto} ></img>
-                    <p>{jobInfo.professionals.type}</p>
+  return (
 
-                    <button onClick={() => deleteRequest()} >Cancelar Pedido</button>
-                </Photo>
-                <Infos>
-                    <p>{jobInfo.professionals.fullName}</p>
-                    <p>{jobInfo.professionals.city}</p>
-                    <p>{jobInfo.date}</p>
-                    <p>Status: {jobInfo.isConfirmed === "Confirmed" ? "Confirmado" : "Pendente"}</p>
+    <Box>
+      <Photo >
+        <img src={jobInfo.professionals.profilePhoto} ></img>
+        <p>{jobInfo.professionals.type}</p>
 
-                    <ProfessionalDescription>
-                        
-                        {jobInfo.professionals.description == null ? (
-                            <p>O profissional ainda não possui descrição.</p>
-                        ) :(
-                            <p>{jobInfo.professionals.description}</p>
-                        ) }
-                    
-                    </ProfessionalDescription>
-                </Infos>
-            </Box>
-        
-    )
+        {jobInfo.isConfirmed !== "Done" ? (
+          <button onClick={() => deleteRequest()} >Cancelar Pedido</button>
+        ) : (
+          <></>
+        )
+        }
+
+      </Photo>
+      <Infos>
+        <p>{jobInfo.professionals.fullName}</p>
+        <p>{jobInfo.professionals.city}</p>
+        <p>{jobInfo.date}</p>
+        <p>Status: {jobInfo.isConfirmed === "Confirmed" ? "Confirmado" : jobInfo.isConfirmed === "Done" ? "Finalizado" : "Pendente"}</p>
+
+        <ProfessionalDescription>
+
+          {jobInfo.professionals.description == null ? (
+            <p>O profissional ainda não possui descrição.</p>
+          ) : (
+            <p>{jobInfo.professionals.description}</p>
+          )}
+
+        </ProfessionalDescription>
+      </Infos>
+    </Box>
+
+  )
 }
 
 const Box = styled.div`
@@ -141,8 +147,12 @@ const ProfessionalDescription = styled.div`
     background-color: #e2e2e2;
 
     p:first-of-type {
-        margin-top: -50px;
         font-size: 13px;
+        padding-left:10px;
+        padding-right: 10px;
+        text-align: center;
+        margin: auto auto;
+        font-weight:700px;
     }
 `
 

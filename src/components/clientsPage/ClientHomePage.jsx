@@ -111,7 +111,7 @@ function ClientHomePage() {
               <p>{clientName}</p>
               <p>{clientCity}</p>
 
-              <button onClick={() => navigate("/Update/ClientAddress")}>Change Location</button>
+              <button onClick={() => navigate("/Update/ClientAddress")}>Mudar localidade</button>
             </ContainerInfos>
           </ProfileSidebar>
       }
@@ -128,11 +128,11 @@ function ClientHomePage() {
                 </H1>
 
                 <Boxtypes>
-                  <BoxType onClick={() => setType("garden")}> <h1>Garden</h1> </BoxType>
+                  <BoxType onClick={() => setType("garden")}> <h1>Jardinagem</h1> </BoxType>
 
-                  <BoxType onClick={() => setType("cleaning")}> <h1>Cleaning</h1> </BoxType>
+                  <BoxType onClick={() => setType("cleaning")}> <h1>Limpeza</h1> </BoxType>
 
-                  <BoxType onClick={() => setType("eletrical")}> <h1>Electrical Service</h1> </BoxType>
+                  <BoxType onClick={() => setType("eletrical")}> <h1>Serviço Elétrico</h1> </BoxType>
                 </Boxtypes>
 
               </>

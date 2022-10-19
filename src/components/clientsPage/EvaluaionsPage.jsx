@@ -13,7 +13,7 @@ function EvaluatePage() {
   const { professionalId } = useParams()
 
   const [evaluations, setEvaluations] = useState([])
-  console.log("aqui", evaluations)
+  const [professionalName, setProfessionalName] = useState("")
 
   useEffect(() => {
     getEvaluations()
@@ -26,22 +26,16 @@ function EvaluatePage() {
     }
   }
 
-  let professionalName = ""
-
   function getProfessional() {
     console.log("entrou")
     const URL = `https://home-care-app.herokuapp.com/professional/${professionalId}`
-    
+
     const promise = axios.get(URL, config)
-    
     promise.then(response => {
-      console.log("auiiiiii")
       const { data } = response
-      console.log("ihi", data)
-      professionalName =  data.fullName
+      setProfessionalName(data.fullName)
     })
     promise.catch(err => {
-      console.log("uuuuuuuuuu")
       console.log(err)
     })
 
@@ -74,16 +68,24 @@ function EvaluatePage() {
 
       <Body>
 
-        <>
-          <H1>
-            <h1>Avaliações de {professionalName}</h1>
-          </H1>
-        </>
-
         {
-          evaluations.map((info, index) => {
-            return(<EvaluationBox key={index} {...info} />)
-          })
+          evaluations.length === 0 ? (
+            <NoData>
+              <h1>{professionalName} não possui avaliações</h1>
+            </NoData>
+          ) : (
+
+            <>
+              <H1>
+                <h1>Avaliações de {professionalName}</h1>
+              </H1>
+              {
+                evaluations.map((info, index) => {
+                  return (<EvaluationBox key={index} {...info} />)
+                })
+              }
+            </>
+          )
         }
 
       </Body>

@@ -29,8 +29,8 @@ password: 123
 - Clientes podem escolher a categoria de serviço que querem contratar.
 - Clientes podem solicitar um trabalho escolhendo a data para que o serviço seja prestado.
 - Clientes possuem uma aba "requests" contendo todas suas solicitações de serviços e seus status, aceito ou pendente.
-- Logando como cliente após ter recebido um profissional do aplicativo, o cliente terá opção de avaliar o profissional.
-- Clientes possuem acesso às avaliações dos profissionais.
+- Logando como cliente após ter recebido um profissional do aplicativo, será exbibido um modal com a opção de escrever uma avaliação para o profissional.
+- Clientes possuem acesso às avaliações dos profissionais feitas pelos clientes.
 ***
 
 ## :computer:	 Tecnologias e Ferramentas usadas

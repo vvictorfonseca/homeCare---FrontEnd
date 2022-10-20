@@ -203,9 +203,10 @@ const Container = styled.main`
     background-color: #333333;
 `
 const ProfileSidebar = styled.div`
-    margin-top: 19vh;
     width: 17.5vw;
+    height: 100%;
     position:fixed;
+    border-right: solid 0.5px #4e4e4e;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
@@ -213,7 +214,7 @@ const ContainerInfos = styled.div`
     width: 14vw;
 
     img {
-        margin-top: 25px;
+        margin-top: 23vh;
         width: 185px;
         height: 185px;
         border-radius: 100%;
@@ -247,11 +248,9 @@ const ContainerInfos = styled.div`
     }
 `
 const Body = styled.div`
-    margin: 10px auto;
+    margin: 0px auto;
     width: 65vw;
     height: 100%;
-    border-left: solid 0.5px #4e4e4e;
-    border-right: solid 0.5px #4e4e4e;
     display: flex;
     flex-direction: column;
 `

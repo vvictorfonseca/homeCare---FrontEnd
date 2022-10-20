@@ -37,13 +37,13 @@ export default function Header() {
             <Options onClick={() => {
                 setType("")
                 navigate("/homePage/client")
-            }}>Home</Options>
+            }}>Menu</Options>
 
             <Options onClick={() => {
                 navigate("/requests/client")
                 setType("")
                 setModalIsOpen(false)
-            }}>Requests</Options>
+            }}>Pedidos</Options>
 
             <ContainerLogOf>
                 <ion-icon name="log-out-outline" onClick={() => logOut()} ></ion-icon>

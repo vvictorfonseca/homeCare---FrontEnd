@@ -33,7 +33,7 @@ function ClientRequestBox(jobInfo) {
     <Box>
       <Photo >
         <img src={jobInfo.professionals.profilePhoto} ></img>
-        <p>{jobInfo.professionals.type}</p>
+        <p>{jobInfo.professionals.type === "garden" ? "Jardinagem" : jobInfo.professionals.type === "cleaning" ? "Limpeza" : "Serviço Elétrico" }</p>
 
         {jobInfo.isConfirmed !== "Done" ? (
           <button onClick={() => deleteRequest()} >Cancelar Pedido</button>

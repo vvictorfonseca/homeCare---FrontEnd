@@ -61,7 +61,7 @@ const Body = styled.div`
     justify-content: center;
     width: 65vw;
     height: 100%;
-    border-left: solid 0.5px #4e4e4e;
+    //border-left: solid 0.5px #4e4e4e;
 `
 const Box = styled.div`
     margin-top: 10px;

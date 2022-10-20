@@ -35,23 +35,16 @@ function RequestJob() {
     let dateParts = dateFormat.split("/")
     let dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
 
-    // if (dayjs().isAfter(dateObject)) {
-    //   alert(`Escolha uma data válida. Após ${dayjs().format('DD/MM/YYYY')}`)
-    // } else {
-    //   const objRequest = {
-    //     professionalId: requestJobInfo.id,
-    //     date: dateFormat
-    //   }
-
-    //   handleJobRequest(objRequest)
-    // }
-
+    if (dayjs().isAfter(dateObject)) {
+      alert(`Escolha uma data válida. Após ${dayjs().format('DD/MM/YYYY')}`)
+    } else {
       const objRequest = {
         professionalId: requestJobInfo.id,
         date: dateFormat
       }
 
       handleJobRequest(objRequest)
+    }
   }
 
   function handleJobRequest(objRequest) {
@@ -85,7 +78,7 @@ function RequestJob() {
         <ProfessionalBox>
           <Photo >
             <img src={requestJobInfo.profilePhoto} />
-            <p>{requestJobInfo.type}</p>
+          <p>{requestJobInfo.type === "garden" ? "Jardinagem" : requestJobInfo.type === "cleaning" ? "Limpeza" : "Serviço Elétrico"}</p>
 
             <button onClick={() => { formatDate() }}>Reserve agora</button>
 
@@ -107,14 +100,15 @@ function RequestJob() {
 const Container = styled.main`
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
+    //width: 100vw;
+    //height: 100vh;
     background-color: #333333;
 `
 const ProfileSidebar = styled.div`
-    margin-top: 19vh;
     width: 17.5vw;
+    height: 100%;
     position:fixed;
+    border-right: solid 0.5px #4e4e4e;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
@@ -122,7 +116,7 @@ const ContainerInfos = styled.div`
     width: 14vw;
 
     img {
-        margin-top: 25px;
+        margin-top: 23vh;
         width: 185px;
         height: 185px;
         border-radius: 100%;
@@ -157,18 +151,19 @@ const ContainerInfos = styled.div`
 `
 
 const Body = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0px auto;
     width: 65vw;
     height: 100%;
-    border-left: solid 0.5px #4e4e4e;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333333;
 `
 const ProfessionalBox = styled.div`
-    margin-top: -180px;
+    margin-left: 15px;
     width: 50vw;
     height: 45vh;
+    margin-top: 45px;
     border-radius: 8px;
     background-color: #d1d1d1;
     display: flex;
@@ -176,7 +171,6 @@ const ProfessionalBox = styled.div`
 const Photo = styled.div`
     display: flex;
     flex-direction: column;
-    //justify-content: center;
     width: 15vw;
     background-color: #55a381;
     border-radius: 8px;
@@ -186,13 +180,13 @@ const Photo = styled.div`
         width: 125px;
         height: 125px;
         border-radius: 50%;
-        border: solid 2px #4e4e4e;
+        border: solid 2px #000000;
     }
 
-    p {
+    p:first-of-type {
+        color: white;
         font-size: 15px;
         font-weight: 700;
-        color: #ffffff;
         margin: -5px auto;
     }
 

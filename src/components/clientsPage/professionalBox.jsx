@@ -16,7 +16,7 @@ function ProfessionalBox({ fullName, city, type, phoneNumber, profilePhoto, desc
         <Box>
           <Photo >
             <img src={profilePhoto} />
-            <p>{type}</p>
+            <p>{type === "garden" ? "Jardinagem" : type === "cleaning" ? "Limpeza" : "Serviço Elétrico"}</p>
 
 
             <button onClick={() => {
@@ -99,13 +99,12 @@ const Boxes = styled.div`
 const Body = styled.div`
     display: flex;
     justify-content: center;
+    margin-top: 20px;
     width: 65vw;
     height: 100%;
-    border-left: solid 0.5px #4e4e4e;
 `
 const Box = styled.div`
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-top: 25px;
     width: 50vw;
     height: 45vh;
     border-radius: 8px;

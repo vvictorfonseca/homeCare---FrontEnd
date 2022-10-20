@@ -179,11 +179,6 @@ const Button = styled.button`
   font-size: 16px;
   border-radius: 15px;
   cursor: pointer;
-
-  :hover {
-    width: 42%;
-    height: 54px;
-  }
 `
 const EvaluateBox = styled.div`
   display: flex;

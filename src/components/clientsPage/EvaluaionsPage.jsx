@@ -104,7 +104,9 @@ const Container = styled.main`
 const ProfileSidebar = styled.div`
     margin-top: 19vh;
     width: 17.5vw;
+    height: 100%;
     position:fixed;
+    border-right: solid 0.5px #4e4e4e;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
@@ -149,13 +151,12 @@ const Body = styled.div`
     margin: 10px auto;
     width: 65vw;
     height: 100%;
-    border-left: solid 0.5px #4e4e4e;
-    border-right: solid 0.5px #4e4e4e;
+    //border-right: solid 0.5px #4e4e4e;
     display: flex;
     flex-direction: column;
 `
 const H1 = styled.div`
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 2px;
     display: flex;
     flex-direction: column;

@@ -89,20 +89,20 @@ const Container = styled.main`
     background-color: #333333;
 `
 const ProfileSidebar = styled.div`
-    margin-top: 19vh;
+    //margin-top: 19vh;
     width: 17.5vw;
     height: 100%;
     position:fixed;
+    border-right: solid 0.5px #4e4e4e;
 `
 const ContainerInfos = styled.div`
     margin-top: 19vh;
     margin: auto auto;
-    //background-color: white;
     width: 14vw;
     height: 100%;
 
     img {
-        margin-top: 25px;
+        margin-top: 23vh;
         width: 185px;
         height: 185px;
         border-radius: 50%;
@@ -126,10 +126,6 @@ const ContainerInfos = styled.div`
 const Body = styled.div`
     margin: 0px auto;
     width: 65vw;
-    //height: 100%;;
-    border-left: solid 0.5px #4e4e4e;
-    border-right: solid 0.5px #4e4e4e;
-    //background-color: green;
 `
 const H1 = styled.div`
     margin-left: 2px;

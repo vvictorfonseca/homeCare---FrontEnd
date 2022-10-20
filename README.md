@@ -1,10 +1,5 @@
 # <p align = "center"> HomeCare </p>
 
-<p align = "center">
-  <img  width="150" src="https://www.clipartmax.com/png/small/298-2983623_cleaning-services-icon-png.png" alt="Cleaning Services Icon Png @clipartmax.com">
-</p>
-
-
 ##  :clipboard: Descrição
 
 HomeCare é uma aplicação de prestação de serviços domésticos. Profissionais podem se cadastrar e escolhero tipo de serviço que irá prestar, FAXINA, JARDINAGEM ou SERVIÇOS ELÉTRICOS. Por outro lado, qualquer pessoa que necessita de algum serviço desse tipo, pode se cadastrar como cliente e contratar o serviço desses profissionais.

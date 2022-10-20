@@ -1,11 +1,13 @@
+import { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from "axios"
-import { useContext, useState, useEffect } from 'react';
 
 import UserContext from '../../context/userContext';
 
 import ProfessionalHeader from "./ProfessionalHeader"
 import ProfessionalRequestBox from './ProfessionalRequestJob';
+import EvaluatePage from '../clientsPage/EvaluaionsPage';
+import EvaluationsPage from './EvaluationsPage';
 
 function ProfessionalHomePage() {
 
@@ -14,6 +16,8 @@ function ProfessionalHomePage() {
     const [professionalJobsData, setProfessionalJobsData] = useState([])
     const [description, setDescription] = useState("")
     const [openDescription, setOpenDescription] = useState(false)
+
+    const { page } = useContext(UserContext)
 
     const config = {
         headers: {
@@ -103,7 +107,7 @@ function ProfessionalHomePage() {
                             professionalJobsData.map((info, index) => {
                                 return (<ProfessionalRequestBox key={index} {...info}  ></ProfessionalRequestBox>)
                             })
-                        )
+                        ) 
                     }
                 </>
             </Body>
@@ -124,6 +128,7 @@ const ProfileSidebar = styled.div`
     width: 17.5vw;
     height: 100%;
     position:fixed;
+    border-right: solid 0.5px #4e4e4e;
     background-color: #333333;
 `
 const ContainerInfos = styled.div`
@@ -184,7 +189,6 @@ const ContainerInfos = styled.div`
 const Body = styled.div`
     margin: auto auto;
     width: 65vw;
-    border-left: solid 0.5px #4e4e4e;
     border-right: solid 0.5px #4e4e4e;
     margin-top: 125px;
 `

@@ -9,7 +9,7 @@ function ProfessionalLogin() {
 
     const navigate = useNavigate()
 
-    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto, setProfessionalDescription } = useContext(UserContext)
+    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto, setProfessionalDescription, setProfessionalId } = useContext(UserContext)
 
     const [proLogin, setProLogin] = useState({ proEmail: "", proPassword: "" })
 
@@ -33,17 +33,20 @@ function ProfessionalLogin() {
             const professionalCity = JSON.stringify(data.city)
             const professionalPhoto = JSON.stringify(data.profilePhoto)
             const professionalDescription = JSON.stringify(data.description)
+            const professionalId = JSON.stringify(data.id)
             localStorage.setItem('professinalDescription', professionalDescription)
             localStorage.setItem('professionalToken', professionalToken)
             localStorage.setItem('professionalFullName', professionalName)
             localStorage.setItem('professionalCity', professionalCity)
             localStorage.setItem('professionalPhoto', professionalPhoto)
+            localStorage.setItem('professionalId', professionalId)
 
             setProfessionalDescription(data.description)
             setProfessionalToken(data.token)
             setProfessionalCity(data.city)
             setProfessionalName(data.fullName)
             setProfessionalPhoto(data.profilePhoto)
+            setProfessionalId(data.id)
             navigate("/homePage/professional")
         })
         promise.catch(err => {

@@ -9,7 +9,7 @@ export default function ProfessionalHeader() {
 
     const navigate = useNavigate()
 
-    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto, setProfessionalDescription } = useContext(UserContext)
+    const { setProfessionalToken, setProfessionalName, setProfessionalCity, setProfessionalPhoto, setProfessionalDescription, setPage } = useContext(UserContext)
 
     function logOut() {
         if (window.confirm("Você deseja se deslogar?")) {
@@ -33,6 +33,14 @@ export default function ProfessionalHeader() {
                 <H1>HomeCare</H1>
                 <H2>Professionals</H2>
             </Logo>
+
+            <Options onClick={() => {
+                navigate("/homePage/professional")
+            }}>Menu</Options>
+
+            <Options onClick={() => {
+                navigate("/evaluations")
+            }}>Avaliações</Options>
             
             <ContainerLogOf>
                 <ion-icon name="log-out-outline" onClick={() => logOut()} ></ion-icon>
@@ -68,6 +76,19 @@ const H2 = styled.h2`
     font-size: 15px;
     font-style: italic;
     margin-left: 65px;
+`
+const Options = styled.div`
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.5vw;
+    width: 8.75vw;
+    height: 6vh;
+    border-left: solid 0.5px #4e4e4e;
+    border-right: solid 0.5px #4e4e4e;
+    color: #333333;
+    cursor: pointer;
 `
 const ContainerLogOf = styled.div`
     display: flex;

@@ -16,6 +16,7 @@ import ClientLocation from "./clientsPage/ClientLocation";
 import UserContext from "../context/userContext";
 import ModalContext from "../context/modalContext";
 import EvaluatePage from "./clientsPage/EvaluaionsPage";
+import EvaluationsPage from "./professionalPage/EvaluationsPage";
 
 function App() {
 
@@ -38,7 +39,9 @@ function App() {
   const professionalCityStorage = JSON.parse(localStorage.getItem('professionalCity'));
   const professionalPhotoStorage = JSON.parse(localStorage.getItem('professionalPhoto'));
   const professionalDescriptionStorage = JSON.parse(localStorage.getItem('professinalDescription'));
+  const professionalIdStorage = JSON.parse(localStorage.getItem('professionalId'));
 
+  const [professionalId, setProfessionalId] = useState(professionalIdStorage)
   const [professionalToken, setProfessionalToken] = useState(professionalTokenStorage)
   const [professionalName, setProfessionalName] = useState(professionalFullNameStorage)
   const [professionalCity, setProfessionalCity] = useState(professionalCityStorage)
@@ -91,7 +94,7 @@ function App() {
     }
   }, [update]);
 
-  const contextValue = { clientToken, setClientToken, clientName, setClientName, clientPhoto, setClientPhoto, clientCity, setClientCity, requestJobInfo, setRequestJobInfo, type, setType, reload, setReload, professionalToken, setProfessionalToken, professionalName, setProfessionalName, professionalCity, setProfessionalCity, professionalPhoto, setProfessionalPhoto, refresh, setRefresh, professionalDescription, setProfessionalDescription, update, setUpdate }
+  const contextValue = { clientToken, setClientToken, clientName, setClientName, clientPhoto, setClientPhoto, clientCity, setClientCity, requestJobInfo, setRequestJobInfo, type, setType, reload, setReload, professionalToken, setProfessionalToken, professionalName, setProfessionalName, professionalCity, setProfessionalCity, professionalPhoto, setProfessionalPhoto, refresh, setRefresh, professionalDescription, setProfessionalDescription, update, setUpdate, professionalId, setProfessionalId }
   const modalValue = { modalIsOpen, setModalIsOpen }
   return (
     <>
@@ -106,6 +109,7 @@ function App() {
               <Route path="/sign-in/client" element={<ClientLogin />} />
               <Route path="/sign-in/professional" element={<ProfessionalLogin />} />
               <Route path="/homePage/professional" element={<ProfessionalHomePage />} />
+              <Route path="/evaluations" element={<EvaluationsPage />} />
               <Route path="/homePage/client" element={<ClientHomePage />} />
               <Route path="/evaluations/:professionalId" element={<EvaluatePage />} />
               <Route path="/request/job" element={<RequestJob />} />

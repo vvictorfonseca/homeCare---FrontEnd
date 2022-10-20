@@ -11,11 +11,11 @@ Caso crie um novo cliente sugiro que bote como localidade o Rio de Janeiro. Já 
 
 Caso queira testar a aplicação com usuários já existentes, logue com essas credenciais:
 - Conta de Cliente:
-email: victor@gmail.com
+email: victor@gmail.com,
 password: 1234
 
 - Conta Profissional:
-email: carlos@gmail.com
+email: carlos@gmail.com,
 password: 123
 
 ***

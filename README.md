@@ -7,7 +7,7 @@ HomeCare é uma aplicação de prestação de serviços domésticos. Profissiona
 ***
 ## Usabilidade
 
-Caso crie um novo cliente sugiro que bote como localidade o Rio de Janeiro, já existem profissionais fictícios criados nesta localidade, com isso poderá fazer a experiência completa do aplicativo e testar as funcionalidades.
+Caso crie um novo cliente sugiro que bote como localidade o Rio de Janeiro. Já existem profissionais fictícios criados nesta localidade, com isso poderá fazer a experiência completa do aplicativo e testar as funcionalidades.
 
 Caso queira testar a aplicação com usuários já existentes, logue com essas credenciais:
 Conta de Cliente:

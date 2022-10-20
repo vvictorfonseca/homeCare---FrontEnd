@@ -10,11 +10,11 @@ HomeCare é uma aplicação de prestação de serviços domésticos. Profissiona
 Caso crie um novo cliente sugiro que bote como localidade o Rio de Janeiro. Já existem profissionais fictícios criados nesta localidade, com isso poderá fazer a experiência completa do aplicativo e testar as funcionalidades.
 
 Caso queira testar a aplicação com usuários já existentes, logue com essas credenciais:
-Conta de Cliente:
+- Conta de Cliente:
 email: victor@gmail.com
 password: 1234
 
-Conta Profissional:
+- Conta Profissional:
 email: carlos@gmail.com
 password: 123
 
